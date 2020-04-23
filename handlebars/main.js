@@ -2,15 +2,28 @@
 var source = $('#mainTemplate').html();
 var template = Handlebars.compile(source);
 
-// Fill the template
-var data = {
-    myTitle : 'A title that rocks!',
-    myText : 'And this is a text that rocks too.'
-};
+var inputArea = $('.input-area input');
+var buttonSend = $('.input-area button');
+var chatArea = $('.chat-area');
+var message = {};
 
-// Init a variable with the generated markup
-var output = template(data);
+buttonSend.click(function() {
+    sendMessage(inputArea.val(), 'sent', '17.00');
+    setTimeout(function(){
+        sendMessage('I am a dummy', 'received', '17.01');
+    }, 1000);
+});
 
-// Append the generate markup to the html ref
-$('main').append(output);
+function sendMessage(messageContent, status, messageTime){
+    // Fill an obj with the template refs
+    message = {
+        content : messageContent,
+        timeStamp : messageTime,
+        status : status
+    };
+    // Init a variable with the generated markup
+    var output = template(message);
 
+    // Append the generate markup to the html ref
+    chatArea.append(output);
+}

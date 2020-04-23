@@ -6,15 +6,21 @@
     <title>Handlebars TEST</title>
 </head>
 <body>
-    <main></main>
+    <main>
+        <h1>Anon chat</h1>
+        <div class="input-area">
+            <input type="text" placeholder="Your text here...">
+            <button>Send</button>
+        </div>
+        <div class="chat-area">
+        </div>
+    </main>
 
     <script id="mainTemplate" type="text/x-handlebars-template">
-            <h1>
-                {{ myTitle }}
-            </h1>
-            <p>
-                {{ myText }}
-            </p>
+            <div class= "message {{status}}">
+                <span>{{content}}</span>
+                <span>{{timeStamp}}</span>
+            </div>
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
